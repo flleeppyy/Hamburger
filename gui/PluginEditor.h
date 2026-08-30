@@ -166,7 +166,7 @@ private:
 
     Info infoPanel;
 
-    juce::Image image = juce::ImageCache::getFromMemory(BinaryData::bg4_jpg, BinaryData::bg4_jpgSize);
+    juce::Image image = juce::ImageCache::getFromMemory(BinaryData::bg5_png, BinaryData::bg5_pngSize);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EditorV2)
 };

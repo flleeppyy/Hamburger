@@ -195,11 +195,11 @@ void Scope<SampleType>::paint(juce::Graphics &g)
             const auto noiseRect = scopeRect.withTrimmedTop(headerHeight(scopeRect));
 
             // draw line halfway
-            g.setColour(juce::Colours::darkgrey);
+            g.setColour(juce::Colour::fromRGB(90, 50, 100));
             g.drawLine(SampleType(0), noiseRect.getCentreY(), w, noiseRect.getCentreY());
 
             // draw wave
-            g.setColour(juce::Colours::yellow);
+            g.setColour(juce::Colour::fromRGB(182, 112, 227));
             plotStraightLine(noiseDistBuf.getReadPointer(0) + 32, noiseDistBuf.getNumSamples() - 32, g, noiseRect, SampleType(0.5), noiseRect.getHeight() / 2);
 
             drawParamHeader(g, scopeRect, getNoiseHeaderLabels());
@@ -398,9 +398,9 @@ void Scope<SampleType>::drawLRScope(juce::Graphics &g, juce::Rectangle<SampleTyp
     plotStraightLine(originLineData.data(), 2, g, scopeRect, SampleType(-0.5), h / 2);
 
     // trigger offset is position where trigger was detected
-    g.setColour(juce::Colours::yellow);
+    g.setColour(juce::Colour::fromRGB(182, 112, 227));
     plotStraightLine(sampleDataL.data() + triggerOffset, hop, g, scopeRect, SampleType(0.5), h / 2);
-    g.setColour(juce::Colours::lime);
+    g.setColour(juce::Colour::fromRGB(151, 11, 240));
     plotStraightLine(sampleDataR.data() + triggerOffset, hop, g, scopeRect, SampleType(0.5), h / 2);
 }
 
@@ -418,7 +418,7 @@ void Scope<SampleType>::drawInOut(juce::Graphics &g, juce::Rectangle<SampleType>
         const auto halfW = plot.getHeight() * SampleType(0.95);
         const auto halfH = plot.getHeight() * SampleType(0.46);
 
-        g.setColour(juce::Colours::yellow);
+        g.setColour(juce::Colour::fromRGB(182, 112, 227));
         const auto count = juce::jmin(sampleDataPreDistortion.size(), sampleDataPostDistortion.size());
         for (size_t i = 1; i < count; ++i)
         {
@@ -610,7 +610,7 @@ void Scope<SampleType>::drawClipper(juce::Graphics &g, juce::Rectangle<SampleTyp
     
     const auto level = juce::jlimit(0.0f, maxIn, dataCollector.levelMeter.getNext());
 
-    auto levelColour = juce::Colours::yellow;
+    auto levelColour = juce::Colour::fromRGB(182, 112, 227);
     if (level > threshold + knee * 0.5f)
         levelColour = juce::Colours::red;
     else if (isSoftClipperKnee(level, threshold, knee))
@@ -789,7 +789,7 @@ void Scope<SampleType>::drawCompBands(juce::Graphics &g, juce::Rectangle<SampleT
 
         if (levelDb > mindB)
         {
-            g.setColour(levelDb > thresholdDb ? juce::Colours::orange : juce::Colours::yellow);
+            g.setColour(levelDb > thresholdDb ? juce::Colour::fromRGB(200, 69, 255) : juce::Colour::fromRGB(182, 112, 227));
             g.fillRect(region.withTop(toY(levelDb)).reduced(region.getWidth() * 0.28f, 0.0f));
         }
 

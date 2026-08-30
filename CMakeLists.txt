@@ -158,6 +158,7 @@ juce_add_binary_data("${BaseTargetName}BinaryData" HEADER_NAME BinaryData.h NAME
     Assets/gplv3-icon.png
     Assets/tick.png
     Assets/bg4.jpg
+    Assets/bg5.png
     Assets/Icons/FilmReel.svg
     Assets/Icons/Flask.svg
     Assets/Icons/Grill.svg
